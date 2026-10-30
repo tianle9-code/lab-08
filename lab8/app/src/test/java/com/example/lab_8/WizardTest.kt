@@ -1,3 +1,4 @@
+
 package com.example.lab_8
 
 import org.junit.Assert.assertEquals
@@ -42,5 +43,23 @@ class WizardTest {
         evilWizard.restoreMana(40)
 
         assertEquals(70, evilWizard.mana)
+    }
+
+    @Test
+    fun train_enoughMana_increasesSpellPower() {
+        evilWizard.train()
+
+        assertEquals(11, evilWizard.spellPower)
+        assertEquals(25, evilWizard.mana)
+    }
+
+    @Test
+    fun train_notEnoughMana_doesNothing() {
+        evilWizard.mana = 4
+
+        evilWizard.train()
+
+        assertEquals(10, evilWizard.spellPower)
+        assertEquals(4, evilWizard.mana)
     }
 }
